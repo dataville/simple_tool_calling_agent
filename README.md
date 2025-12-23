@@ -202,10 +202,6 @@ Key extension points:
 5. Experiment by modifying test questions
 6. Try adding a new tool using the established patterns
 
-## 🤝 Contributing
-
-This is an educational project. Contributions that improve clarity, fix errors, or demonstrate additional patterns are welcome.
-
 ## 📝 License
 
 MIT License - See LICENSE file for details.
