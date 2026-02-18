@@ -1,16 +1,15 @@
 # 🤖 Tool-Calling AI Agent with Semantic Evaluation
 
-**A complete educational implementation showing how to build an AI agent with function calling capabilities and LLM-based evaluation - built with LangChain, LangGraph, and vLLM.**
+**How to build an AI agent with function calling capabilities and LLM-based evaluation - built with LangChain, LangGraph, and vLLM.**
 
 ## 🎯 What This Demonstrates
 
-This tutorial notebook shows the complete pipeline for building agents that make **actual structured function calls** rather than just describing tool usage in text or faking tool calls. Includes:
+This tutorial notebook shows the complete pipeline for building agents that make **actual structured function calls**. Includes:
 
-- ✅ **Structured Tool Calling**: Agent executes real functions with validated parameters, not text descriptions or fake calls
+- ✅ **Structured Tool Calling**: Agent executes real functions with validated parameters
 - ✅ **Smart Routing**: LangGraph workflow that decides when to call tools vs. return final answers
 - ✅ **Pydantic Validation**: Type-safe tool schemas that guide LLM behavior
-- ✅ **Semantic Evaluation**: LLM-based assessment that avoids brittle keyword matching
-- ✅ **GPU-Efficient Architecture**: Single model instance serving dual roles (agent + evaluator)
+- ✅ **Semantic Evaluation**: LLM-based assessment that avoids keyword matching
 - ✅ **Production Patterns**: Proper error handling, state management, and tool composition
 
 ## 🛠️ Technologies
@@ -29,21 +28,20 @@ This tutorial notebook shows the complete pipeline for building agents that make
 - **Evaluator Mode**: `llm` (raw) - performs semantic assessment
 
 This hybrid approach runs on a 24GB GPU by using one model instance for both agent execution and evaluation, avoiding the memory overhead of loading two separate models.
+Ideally, one should use 2 different models but due to memory constraints only one model was used.
 
-## 📋 What You'll Learn
-
-### Core Concepts
+## Core Concepts
 1. **Why model selection matters** - Function calling requires specifically trained models
 2. **Tool binding workflow** - How to properly attach tools to LLMs (commonly skipped by coding agents)
 3. **Pydantic schema design** - Creating tool definitions that guide LLM behavior
 4. **Docstring importance** - How comprehensive docstrings determine agent reliability
 5. **State graph patterns** - Building agent workflows with conditional routing
 
-### Implementation Details
+## Implementation Details
 - Setting up vLLM with tool-calling flags for Hermes models
 - Defining tools with proper validation and error handling
 - Building state graphs with the current LangGraph API
-- Implementing semantic evaluation vs. brittle keyword matching
+- Implementing semantic evaluation vs. keyword matching
 - Managing conversation state and context across turns
 
 ## 🚀 Quick Start
@@ -110,7 +108,7 @@ Execute cells sequentially. The notebook includes:
 Both tools follow production patterns:
 - Complete docstrings with parameter descriptions
 - Pydantic validation schemas
-- Natural language return values (not just raw numbers)
+- Natural language return values
 - Proper error messages
 
 ## 📊 Evaluation System
@@ -123,7 +121,7 @@ The notebook includes a complete evaluation framework that assesses:
 
 **Why LLM-based evaluation?**
 - Understands semantic variations ("multiply" vs "multiplied" vs "times")
-- Avoids brittle keyword matching that breaks on rephrasing
+- Avoids keyword matching that breaks on rephrasing
 - Provides reasoned assessment with explanations
 - Scales to complex tool compositions
 
@@ -164,8 +162,6 @@ graph_builder.add_edge(START, "agent")
 lambda x: "tools" if x else END
 ```
 
-If copying code from AI assistants, verify and update to current syntax.
-
 ## 🔄 From Tutorial to Production
 
 This notebook provides patterns for building agents that interact with:
@@ -181,7 +177,6 @@ Key extension points:
 - Implement authentication for external APIs
 - Add retry logic and rate limiting
 - Extend evaluation criteria for domain-specific requirements
-- Scale to multi-agent systems with specialized tool sets
 
 ## 📁 Repository Structure
 
@@ -195,16 +190,12 @@ Key extension points:
 ## 🎓 Learning Path
 
 **Recommended order:**
-1. Read through the complete notebook markdown (don't execute yet)
+1. Read through the complete notebook markdown
 2. Understand the architecture overview and why each component exists
 3. Start vLLM server and verify it loads successfully
 4. Execute notebook cells one by one, reading output carefully
 5. Experiment by modifying test questions
 6. Try adding a new tool using the established patterns
-
-## 🤝 Contributing
-
-This is an educational project. Contributions that improve clarity, fix errors, or demonstrate additional patterns are welcome.
 
 ## 📝 License
 
